@@ -1,15 +1,13 @@
 #include "Metro.h"
 
-int teste = 1;
-boolean state1 = false;
-int i1 = 0;
 Metro metro1 = Metro(500);
 
 //Enderecos Elevador A
 int a0 = 38;
 int a1 = 39;
 int a2 = 40;
-int i = 0;
+int ia = 0;
+
 
 // botões
 int a = 5;
@@ -21,7 +19,6 @@ int nfila1 = 0;
 void setup() {
   Serial.begin(9600);
   //Enderecos Elevador A
-  Serial.begin(9600);
   pinMode(a0, OUTPUT);
   pinMode(a1, OUTPUT);
   pinMode(a2, OUTPUT);
@@ -40,15 +37,15 @@ void loop() {
   if (metro1.check()) {
     if (fila1[0] == -1) {
       Serial.print("deu -1");
-    } else if (i1 < fila1[0]) {
-      i1++;
+    } else if (ia < fila1[0]) {
+      ia++;
     }
-    else if (i1 > fila1[0]) {
-      i1--;
+    else if (ia > fila1[0]) {
+      ia--;
     } else {
       realocamento(fila1);
     }
-    changePosition(i1, a00, a01, a02);
+    changePosition(ia, a00, a01, a02);
     digitalWrite(a0, a00);
     digitalWrite(a1, a01);
     digitalWrite(a2, a02);
