@@ -16,7 +16,6 @@ void addFila(int *arr2, int narra2, int n) {
 
 void realocamento(int * vetor, int i) {
   apagaInd(i);
-  digitalWrite(i03, HIGH);
   if (vetor[0] != -1) {
     for (int i = 0; i <= 7; i++) {
       vetor[i] = vetor[i + 1];

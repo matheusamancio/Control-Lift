@@ -3,25 +3,25 @@
 void  apagaInd(int pos) {
   switch (pos) {
     case 1:
-      digitalWrite(i03, HIGH);
+      digitalWrite(i13, HIGH);
       break;
     case 2:
-      digitalWrite(i03, HIGH);
+      digitalWrite(i23, HIGH);
       break;
     case 3:
-      digitalWrite(i03, HIGH);
+      digitalWrite(i33, HIGH);
       break;
     case 4:
-      digitalWrite(i03, HIGH);
+      digitalWrite(i43, HIGH);
       break;
     case 5:
-      digitalWrite(i03, HIGH);
+      digitalWrite(i53, HIGH);
       break;
     case 6:
-      digitalWrite(i03, HIGH);
+      digitalWrite(i63, HIGH);
       break;
     case 7:
-      digitalWrite(i03, HIGH);
+      digitalWrite(i73, HIGH);
       break;
   }
 }
