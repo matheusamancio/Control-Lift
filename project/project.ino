@@ -88,12 +88,12 @@ void setup() {
   pinMode(i11, OUTPUT);      pinMode(i21, OUTPUT);      pinMode(i31, OUTPUT);      pinMode(i41, OUTPUT);
   pinMode(i12, OUTPUT);      pinMode(i22, OUTPUT);      pinMode(i32, OUTPUT);      pinMode(i42, OUTPUT);
   pinMode(i13, OUTPUT);      pinMode(i23, OUTPUT);      pinMode(i33, OUTPUT);      pinMode(i43, OUTPUT);
-  digitalWrite(i13, HIGH);   digitalWrite(i23, HIGH);   pinMode(i33, OUTPUT);      pinMode(i43, OUTPUT);
+  digitalWrite(i13, HIGH);   digitalWrite(i23, HIGH);   digitalWrite(i33, HIGH);   digitalWrite(i43, HIGH);
 
   pinMode(i51, OUTPUT);      pinMode(i61, OUTPUT);      pinMode(i71, OUTPUT); 
   pinMode(i52, OUTPUT);      pinMode(i62, OUTPUT);      pinMode(i72, OUTPUT); 
   pinMode(i53, OUTPUT);      pinMode(i63, OUTPUT);      pinMode(i73, OUTPUT); 
-  digitalWrite(i53, HIGH);   digitalWrite(i63, HIGH);   pinMode(i73, OUTPUT); 
+  digitalWrite(i53, HIGH);   digitalWrite(i63, HIGH);   digitalWrite(i73, HIGH);
 
 
 
