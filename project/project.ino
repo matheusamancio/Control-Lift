@@ -1,9 +1,9 @@
 #include "Metro.h"
 
-Metro metro1 = Metro(500);
-Metro metro2 = Metro(500);
-Metro metro3 = Metro(500);
-Metro metro4 = Metro(500);
+Metro metro1 = Metro(700);
+Metro metro2 = Metro(700);
+Metro metro3 = Metro(700);
+Metro metro4 = Metro(700);
 
 
 //Enderecos Elevador A
@@ -31,21 +31,27 @@ int d2 = 33;
 int id = 0;
 
 //Indicadores
-int i11 = 34;  int i21 = 37;  int i31 = 40;  int i41 = 43;
-int i12 = 35;  int i22 = 38;  int i32 = 41;  int i42 = 44;
-int i13 = 36;  int i23 = 39;  int i33 = 42;  int i43 = 45;
+int i01 = 4;  int i11 = 34;  int i21 = 37;  int i31 = 40;  int i41 = 43;
+int i02 = 3;  int i12 = 35;  int i22 = 38;  int i32 = 41;  int i42 = 44;
+int i03 = 2;  int i13 = 36;  int i23 = 39;  int i33 = 42;  int i43 = 45;
 
 int i51 = 46;  int i61 = 49;  int i71 = 52;
 int i52 = 47;  int i62 = 50;  int i72 = 53;
-int i53 = 48;  int i63 = 51;  int i73 = 4;
+int i53 = 48;  int i63 = 51;  int i73 = 5;
 
 
+// botões subida
+int a = 10;
+int b = 11;
+int c = 12;
+int s = 13;
 
-// botões
-int a = 5;
-int b = 6;
-int c = 7;
-int s = 8;
+// botões decida
+int x = 6;
+int y = 7;
+int z = 8;
+int s2 = 9;
+
 
 
 int filaA[20];
@@ -78,24 +84,28 @@ void setup() {
   pinMode(d1, OUTPUT);
   pinMode(d2, OUTPUT);
 
-  // botões
+  // botões subida
   pinMode(a, OUTPUT);
   pinMode(b, OUTPUT);
   pinMode(c, OUTPUT);
   pinMode(s, INPUT);
+  
+  // botões decida
+  pinMode(x, OUTPUT);
+  pinMode(y, OUTPUT);
+  pinMode(z, OUTPUT);
+  pinMode(s2, INPUT);
 
   // botões
-  pinMode(i11, OUTPUT);      pinMode(i21, OUTPUT);      pinMode(i31, OUTPUT);      pinMode(i41, OUTPUT);
-  pinMode(i12, OUTPUT);      pinMode(i22, OUTPUT);      pinMode(i32, OUTPUT);      pinMode(i42, OUTPUT);
-  pinMode(i13, OUTPUT);      pinMode(i23, OUTPUT);      pinMode(i33, OUTPUT);      pinMode(i43, OUTPUT);
-  digitalWrite(i13, HIGH);   digitalWrite(i23, HIGH);   digitalWrite(i33, HIGH);   digitalWrite(i43, HIGH);
+ pinMode(i01, OUTPUT); pinMode(i11, OUTPUT);      pinMode(i21, OUTPUT);      pinMode(i31, OUTPUT);      pinMode(i41, OUTPUT);
+ pinMode(i02, OUTPUT); pinMode(i12, OUTPUT);      pinMode(i22, OUTPUT);      pinMode(i32, OUTPUT);      pinMode(i42, OUTPUT);
+ pinMode(i03, OUTPUT); pinMode(i13, OUTPUT);      pinMode(i23, OUTPUT);      pinMode(i33, OUTPUT);      pinMode(i43, OUTPUT);
+ digitalWrite(i03,HIGH); digitalWrite(i13, HIGH);   digitalWrite(i23, HIGH);   digitalWrite(i33, HIGH);   digitalWrite(i43, HIGH);
 
   pinMode(i51, OUTPUT);      pinMode(i61, OUTPUT);      pinMode(i71, OUTPUT); 
   pinMode(i52, OUTPUT);      pinMode(i62, OUTPUT);      pinMode(i72, OUTPUT); 
   pinMode(i53, OUTPUT);      pinMode(i63, OUTPUT);      pinMode(i73, OUTPUT); 
   digitalWrite(i53, HIGH);   digitalWrite(i63, HIGH);   digitalWrite(i73, HIGH);
-
-
 
 }
 
@@ -222,6 +232,54 @@ void loop() {
       break;
     }
   }
+  
+  
+  
+   // botões subida
+  int x1, y1, z1;
+  for (int i = 0; i <= 7; i++) {
+    verifica(i, x1, y1, z1);
+    digitalWrite(x, x1);
+    digitalWrite(y, y1);
+    digitalWrite(z, z1);
+    if (digitalRead(s2) == HIGH) {
+      Serial.print("Entrou no if");
+      int arr[3] = {z1, y1, x1};
+      if (arr[0] == LOW && arr[1] == LOW && arr[2] == LOW) {
+        addFila(filaA, nfilaA, 1);
+        indica(1, i01, i02, i03);
+        break;
+      } else if (arr[0] == LOW && arr[1] == LOW && arr[2] == HIGH) {
+        addFila(filaB, nfilaB, 2);
+        indica(2, i01, i02, i03);
+        break;
+      } else if (arr[0] == LOW && arr[1] == HIGH && arr[2] == LOW) {
+        addFila(filaA, nfilaA, 3);
+        indica(3, i01, i02, i03);
+        break;
+      } else if (arr[0] == LOW && arr[1] == HIGH && arr[2] == HIGH) {
+        addFila(filaB, nfilaB, 4);
+        indica(4, i01, i02, i03);
+        break;
+      } else if (arr[0] == HIGH && arr[1] == LOW && arr[2] == LOW) {
+        addFila(filaC, nfilaC, 5);
+        indica(5, i01, i02, i03);
+        break;
+      } else if (arr[0] == HIGH && arr[1] == LOW && arr[2] == HIGH) {
+        addFila(filaC, nfilaC, 6);
+        indica(6, i01, i02, i03);
+        break;
+      } else if (arr[0] == HIGH && arr[1] == HIGH && arr[2] == LOW) {
+        addFila(filaD, nfilaD, 7);
+        indica(7, i01, i02, i03);
+        break;
+      } else
+        //        Serial.print("7");
+        addFila(filaA, nfilaA, 0);
+      break;
+    }
+  }
+  
 
 }
 

@@ -2,6 +2,9 @@
 
 void  apagaInd(int pos) {
   switch (pos) {
+    case 0:
+      digitalWrite(i03, HIGH);
+      break;
     case 1:
       digitalWrite(i13, HIGH);
       break;
